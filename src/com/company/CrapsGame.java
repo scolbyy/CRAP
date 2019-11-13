@@ -17,7 +17,7 @@ public class CrapsGame
     public int processRoll(int total)
     {
         int result;
-       if(point == 0) {
+        if(point == 0) {
            switch (total) {
                case 2:
                case 3:
@@ -35,22 +35,20 @@ public class CrapsGame
                    point = total;
            }
        }
-       else
-           switch (total) {
-               case 2:
-               case 3:
-               case 12:
-                   result = -1;
-                   point = 0;
-                   break;
-               case 7:
-               case 11:
-                   result = 1;
-                   point = 0;
-                   break;
-               default:
-                   result = 0;
-                   point = total;
+       else{
+           if (total==point){
+               result = 1;
+               point = 0;
+           }
+           else if (total==7){
+               result = -1;
+               point = 0;
+           }
+           else{
+               result = 0;
+           }
+       }
+
 
 
         return result;
@@ -59,8 +57,7 @@ public class CrapsGame
     /**
      *  Returns the saved point
      */
-    public int getPoint()
-    {
+    public int getPoint(){
         return point;
     }
 }
